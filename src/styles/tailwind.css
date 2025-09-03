@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Colors */
+    --color-background: #0F0F23; /* rich-dark-navy */
+    --color-foreground: #F8FAFC; /* slate-50 */
+    --color-border: #1E1B4B; /* indigo-900 */
+    --color-input: #1E1B4B; /* indigo-900 */
+    --color-ring: #6366F1; /* indigo-500 */
+    
+    /* Card Colors */
+    --color-card: #1E1B4B; /* indigo-900 */
+    --color-card-foreground: #F8FAFC; /* slate-50 */
+    
+    /* Popover Colors */
+    --color-popover: #1E1B4B; /* indigo-900 */
+    --color-popover-foreground: #F8FAFC; /* slate-50 */
+    
+    /* Muted Colors */
+    --color-muted: #1E1B4B; /* indigo-900 */
+    --color-muted-foreground: #94A3B8; /* slate-400 */
+    
+    /* Primary Colors */
+    --color-primary: #6366F1; /* indigo-500 */
+    --color-primary-foreground: #F8FAFC; /* slate-50 */
+    
+    /* Secondary Colors */
+    --color-secondary: #8B5CF6; /* violet-500 */
+    --color-secondary-foreground: #F8FAFC; /* slate-50 */
+    
+    /* Accent Colors */
+    --color-accent: #F59E0B; /* amber-500 */
+    --color-accent-foreground: #0F0F23; /* rich-dark-navy */
+    
+    /* Success Colors */
+    --color-success: #10B981; /* emerald-500 */
+    --color-success-foreground: #F8FAFC; /* slate-50 */
+    
+    /* Warning Colors */
+    --color-warning: #F59E0B; /* amber-500 */
+    --color-warning-foreground: #0F0F23; /* rich-dark-navy */
+    
+    /* Error Colors */
+    --color-error: #EF4444; /* red-500 */
+    --color-error-foreground: #F8FAFC; /* slate-50 */
+    
+    /* Destructive Colors */
+    --color-destructive: #EF4444; /* red-500 */
+    --color-destructive-foreground: #F8FAFC; /* slate-50 */
+    
+    /* Emotion-Responsive Variables */
+    --emotion-intensity: 1;
+    --emotion-hue: 250;
+    --emotion-saturation: 70%;
+    --emotion-lightness: 60%;
+    
+    /* Animation Variables */
+    --animation-duration-fast: 200ms;
+    --animation-duration-normal: 400ms;
+    --animation-easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+    --animation-easing-emotional: cubic-bezier(0.4, 0, 0.6, 1);
+    
+    /* Shadow Variables */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  /* Emotion-responsive animations */
+  .emotion-pulse {
+    animation: emotionPulse calc(var(--animation-duration-normal) * var(--emotion-intensity)) var(--animation-easing-emotional) infinite;
+  }
+  
+  @keyframes emotionPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  
+  /* Biometric-aware typography */
+  .biometric-text {
+    font-size: calc(1rem + (var(--emotion-intensity) - 1) * 0.1rem);
+    line-height: calc(1.5 + (var(--emotion-intensity) - 1) * 0.1);
+  }
+  
+  /* Ambient background responses */
+  .ambient-bg {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--emotion-hue), var(--emotion-saturation), calc(var(--emotion-lightness) * 0.1)) 0%,
+      var(--color-background) 100%
+    );
+    transition: background var(--animation-duration-normal) var(--animation-easing-emotional);
+  }
+  
+  /* Gesture-aware interactions */
+  .gesture-aware {
+    transition: all var(--animation-duration-fast) var(--animation-easing-standard);
+  }
+  
+  .gesture-aware:hover {
+    transform: translateY(calc(-2px * var(--emotion-intensity)));
+  }
+  
+  .gesture-aware:active {
+    transform: translateY(calc(-1px * var(--emotion-intensity)));
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .emotion-pulse,
+    .gesture-aware,
+    .ambient-bg {
+      animation: none;
+      transition: none;
+    }
+  }
+}
